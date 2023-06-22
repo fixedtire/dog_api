@@ -1,0 +1,31 @@
+body {
+    background-color: lightblue;
+  }
+  
+  .container {
+    margin: auto;
+    width: 30%;
+    text-align: center;
+    font-family: Helvetica;
+    background-color: beige;
+    padding: 1em;
+    border-radius: 25px;
+  }
+  
+  .dog-button {
+    font-family: Helvetica;
+    background-color: white;
+    margin-bottom: 10px;
+  }
+  
+  #info {
+    display: none;
+    background-color: white;
+    padding: 2px;
+    color: red;
+  }
+  
+  #dog-pic {
+    width: 70%;
+    margin-bottom: 2em;
+  }
