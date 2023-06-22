@@ -18,11 +18,15 @@ body {
     margin-bottom: 10px;
   }
   
-  #info {
+  #error {
     display: none;
     background-color: white;
     padding: 2px;
     color: red;
+  }
+
+  #loading {
+    display: none;
   }
   
   #dog-pic {

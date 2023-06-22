@@ -1,12 +1,24 @@
+// ASSIGNING THE DOG IMAGE TO A VARIABLE
 const dogImg = document.getElementById("dog-pic");
 
+// URL OF THE PUBLIC-API
 const url = "https://random.dog/woof.json";
 
-const info = document.getElementById("info");
+// ERROR MESSAGE IF API CAN'T PROVIDE THE IMAGE
+const error = document.getElementById("error");
 
-let showInfo = false;
+// STATE OF ERROR MESSAGE
+let errorShown = false;
 
-function getDog() {
+// INFO THAT IMAGE IS LOADING
+const loadingInfo = document.getElementById("loading");
+
+// STATE OF LOADING MESSAGE
+let isLoading = false;
+
+// BUTTONCLICK: API-CALL TO DISPLAY DOG IMAGE
+
+function apiCall() {
   const dog = fetch(url)
     .then((res) => res.json())
     .then((data) => {
@@ -14,9 +26,21 @@ function getDog() {
     });
 }
 
+function getDog() {
+  if (errorShown === true) {
+    error.style.display = "none";
+  }
+
+  apiCall();
+
+  while (!dogImg.complete) {
+    loadingInfo.style.display = "block"; // Show loading message
+  }
+}
+
 dogImg.onerror = function () {
-  info.style.display = "block";
-  showInfo = true;
+  error.style.display = "block";
+  errorShown = true;
 };
 
 /* random dog pictures API src:
