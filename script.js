@@ -13,34 +13,54 @@ let errorShown = false;
 // INFO THAT IMAGE IS LOADING
 const loadingInfo = document.getElementById("loading");
 
-// STATE OF LOADING MESSAGE
-let isLoading = false;
-
-// BUTTONCLICK: API-CALL TO DISPLAY DOG IMAGE
-
-function apiCall() {
-  const dog = fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      dogImg.src = data.url;
-    });
+// FUNCTION FOR SHOWING 'LOADING'
+function showLoading() {
+  loadingInfo.style.display = "block";
 }
 
-function getDog() {
+// FUNCTION FOR HIDING 'LOADING'
+function hideLoading() {
+  loadingInfo.style.display = "none";
+}
+
+// API-CALL TO DISPLAY DOG IMAGE
+async function apiCall() {
+  try {
+    showLoading();
+    const response = await fetch(url);
+    const data = await response.json();
+
+    // Update the UI with the fetched data
+    dogImg.src = data.url;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+// ONCLICK BUTTON FUNCTION
+
+async function getDog() {
+  // hides previous Error-Message if occured
   if (errorShown === true) {
     error.style.display = "none";
   }
-
+  // api-call
   apiCall();
 
-  while (!dogImg.complete) {
-    loadingInfo.style.display = "block"; // Show loading message
-  }
+  // checking if image is loaded and hides Loading Message if so
+  setTimeout(() => {
+    if (dogImg.naturalWidth > 0 && dogImg.naturalHeight !== 0) {
+      hideLoading();
+    }
+  }, 1000);
 }
+
+// SHOWS ERROR IF IMAGE COULD NOT LOAD
 
 dogImg.onerror = function () {
   error.style.display = "block";
   errorShown = true;
+  hideLoading();
 };
 
 /* random dog pictures API src:
