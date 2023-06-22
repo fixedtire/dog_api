@@ -23,7 +23,7 @@ function hideLoading() {
   loadingInfo.style.display = "none";
 }
 
-// API-CALL TO DISPLAY DOG IMAGE
+// SETTING UP FUNCTION FOR API-CALL
 async function apiCall() {
   try {
     showLoading();
@@ -37,9 +37,8 @@ async function apiCall() {
   }
 }
 
-// ONCLICK BUTTON FUNCTION
-
-async function getDog() {
+// TO DISPLAY DOG IMAGE
+function getDog() {
   // hides previous Error-Message if occured
   if (errorShown === true) {
     error.style.display = "none";
@@ -65,7 +64,6 @@ dogImg.onerror = function () {
 
 /* random dog pictures API src:
 https://random.dog/woof.json"}
-
 
 public API list on github:
 https://github.com/public-api-lists/public-api-lists
