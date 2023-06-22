@@ -1,4 +1,5 @@
 body {
+    margin-top: 4em;
     background-color: lightblue;
   }
   
@@ -32,4 +33,10 @@ body {
   #dog-pic {
     width: 70%;
     margin-bottom: 2em;
+  }
+
+  .code {
+    font-family: Helvetica;
+    float: right;
+    margin-right: 8em;
   }
