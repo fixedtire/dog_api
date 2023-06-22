@@ -37,7 +37,7 @@ async function apiCall() {
   }
 }
 
-// TO DISPLAY DOG IMAGE
+// ONCLICK BUTTON FUNCTION TO DISPLAY DOG IMAGE
 function getDog() {
   // hides previous Error-Message if occured
   if (errorShown === true) {
@@ -52,6 +52,13 @@ function getDog() {
       hideLoading();
     }
   }, 1500);
+
+  // another checking if images take longer to load
+  setTimeout(() => {
+    if (dogImg.naturalWidth > 0 && dogImg.naturalHeight !== 0) {
+      hideLoading();
+    }
+  }, 4000);
 }
 
 // SHOWS ERROR IF IMAGE COULD NOT LOAD
