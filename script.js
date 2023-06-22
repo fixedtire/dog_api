@@ -58,7 +58,7 @@ function getDog() {
     if (dogImg.naturalWidth > 0 && dogImg.naturalHeight !== 0) {
       hideLoading();
     }
-  }, 4000);
+  }, 3000);
 }
 
 // SHOWS ERROR IF IMAGE COULD NOT LOAD
